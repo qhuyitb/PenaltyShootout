@@ -169,11 +169,11 @@ public class GameRoomController {
         }
 
         // Vẽ cầu thủ chi tiết
-        player = createPlayer(paneWidth / 2, paneHeight - 50, Color.BLUE, "/assets/player_head.jpg");
+        player = createPlayer(paneWidth / 2, paneHeight - 50, Color.BLUE, "/assets/MESSI.jpg");
         gamePane.getChildren().add(player);
 
         // Vẽ thủ môn chi tiết
-        goalkeeper = createPlayer(paneWidth / 2, 100, Color.RED, "/assets/goalkeeper_head.jpg");
+        goalkeeper = createPlayer(paneWidth / 2, 100, Color.RED, "/assets/player_head.jpg");
         gamePane.getChildren().add(goalkeeper);
 
         // Vẽ bóng với họa tiết đen trắng
@@ -196,7 +196,7 @@ public class GameRoomController {
         winText.setX(imageView.getX() + 25); // Đặt vị trí ngang giống ImageView
         winText.setY(imageView.getY() + imageView.getFitHeight() + 30); // Đặt vị trí ngay bên dưới hình ảnh
 
-        Text winText2 = new Text("Glory Man United!");
+        Text winText2 = new Text("Messi vô địch, bẩy giờ kém mười siuuuuuu!");
         winText2.setFill(Color.YELLOW);
         winText2.setFont(Font.font("Arial", FontWeight.BOLD, 24)); // Tăng kích thước phông chữ
         winText2.setX(imageView.getX() + 5); // Đặt vị trí ngang giống ImageView
@@ -222,7 +222,7 @@ public class GameRoomController {
         loseText.setFont(Font.font("Arial", FontWeight.BOLD, 24)); // Tăng kích thước phông chữ
         loseText.setX(imageLoseView.getX()); // Đặt vị trí ngang giống ImageView
         loseText.setY(imageLoseView.getY() + imageLoseView.getFitHeight() + 20);
-        Text loseText2 = new Text("Tất cả vào hang!");
+        Text loseText2 = new Text("Tất cả vào hang đi trốn!");
         loseText2.setFill(Color.YELLOW);
         loseText2.setFont(Font.font("Arial", FontWeight.BOLD, 24)); // Tăng kích thước phông chữ
         loseText2.setX(imageLoseView.getX() - 20); // Đặt vị trí ngang giống ImageView

@@ -190,7 +190,7 @@ public class GameRoom {
                 goalkeeperHandler.getUser().getId(),
                 shooterDirection, goalkeeperDirection, goal ? "win" : "lose");
 
-        // Gửi tỷ số cập nhật (luôn theo thứ tự player1, player2)
+        // Gửi tỷ số cập nhật
         if (shooterHandler == player1) {
             shooterHandler.sendMessage(new Message("update_score", 
                 new int[] { shooterScore, goalkeeperScore, currentRound }));
@@ -203,14 +203,15 @@ public class GameRoom {
                 new int[] { shooterScore, goalkeeperScore, currentRound }));
         }
 
-        // Tăng round và SWAP vai trò
+        // Tăng round TRƯỚC
         currentRound++;
-        
-        // Đổi vai trò shooter và goalkeeper
+
+        // SWAP vai trò SAU
         ClientHandler temp = shooterHandler;
         shooterHandler = goalkeeperHandler;
         goalkeeperHandler = temp;
-        
+
+        // Kiểm tra kết thúc SAU KHI đã tăng round và swap
         if (checkEndGame()) {
             determineWinner();
         } else {
@@ -480,22 +481,34 @@ public class GameRoom {
     }
 
     private boolean checkEndGame() {
-        // Đã hoàn thành 10 rounds (mỗi người 5 lượt)
-        if (currentRound > MAX_ROUNDS) {
-            // Nếu hòa thì tiếp tục (sudden death)
-            if (shooterScore == goalkeeperScore) {
-                // Trong sudden death, kiểm tra sau mỗi CẶP lượt (round chẵn sau round 10)
-                if (currentRound % 2 == 1) { // Round 11, 13, 15... đã xong một cặp
-                    return shooterScore != goalkeeperScore; // Kết thúc nếu có người thắng
-                }
-                return false; // Chưa xong một cặp lượt, tiếp tục
-            }
-            // Không hòa, kết thúc luôn
-            return true;
+        // currentRound ĐÃ được tăng lên rồi
+        // currentRound = 2 nghĩa là vừa đá xong round 1
+        // currentRound = 11 nghĩa là vừa đá xong round 10
+
+        // Chưa đủ 10 rounds
+        if (currentRound <= MAX_ROUNDS) {
+            return false;
         }
-        
-        // Chưa đủ 10 rounds, tiếp tục
-        return false;
+
+        // Vừa đá xong round 10 (currentRound = 11)
+        if (currentRound == MAX_ROUNDS + 1) {
+            // Kiểm tra hòa không
+            return shooterScore != goalkeeperScore;
+        }
+
+        // Đã vào sudden death (currentRound >= 12)
+        // currentRound = 12 → vừa đá xong round 11 (lượt 1 sudden death)
+        // currentRound = 13 → vừa đá xong round 12 (lượt 2 sudden death)
+
+        int suddenDeathRounds = currentRound - (MAX_ROUNDS + 1);
+
+        // Nếu là lượt chẵn (2, 4, 6...) → cả 2 đã đá xong → KIỂM TRA
+        // Nếu là lượt lẻ (1, 3, 5...) → mới 1 người đá → CHƯA kiểm tra
+        if (suddenDeathRounds % 2 == 0) {
+            return shooterScore != goalkeeperScore;
+        } else {
+            return false;
+        }
     }
 
     public void startGoalkeeperTimeout() {
@@ -508,7 +521,7 @@ public class GameRoom {
                 goalkeeperHandler.sendMessage(
                         new Message("timeout", "Hết giờ! \nHệ thống tự chọn 'Giữa-Thấp' cho bạn."));
                 shooterHandler.sendMessage(new Message("opponent_timeout",
-                        "Hết giờ! \nHệ thống tự chọn 'Middle' cho đối thủ."));
+                        "Hết giờ! \nHệ thống tự chọn 'Giữa-Thấp' cho đối thủ."));
 
                 // Tiến hành xử lý kết quả
                 handleGoalkeeper(goalkeeperDirection, goalkeeperHandler);
