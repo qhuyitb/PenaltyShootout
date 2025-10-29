@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="client.GUI.RegisterController">
+    <Label text="Đăng Ký Tài Khoản" style="-fx-font-size: 24px; -fx-text-fill: white;"/>
+    <TextField fx:id="usernameField" promptText="Tên đăng nhập (ít nhất 3 ký tự)" />
+    <PasswordField fx:id="passwordField" promptText="Mật khẩu (ít nhất 6 ký tự)" />
+    <PasswordField fx:id="confirmPasswordField" promptText="Xác nhận mật khẩu" />
+    <Label fx:id="errorLabel" textFill="red"/>
+    <HBox spacing="10.0" alignment="CENTER">
+        <Button text="Đăng ký" onAction="#handleRegister" prefWidth="100.0"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+        <Button text="Quay lại" onAction="#handleBackToLogin" prefWidth="100.0"/>
+    </HBox>
+</VBox>

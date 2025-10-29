@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="client.GUI.LoginController">
+    <Label text="Đăng Nhập" style="-fx-font-size: 24px; -fx-text-fill: white;"/>
+    <TextField fx:id="usernameField" promptText="Tên đăng nhập" />
+    <PasswordField fx:id="passwordField" promptText="Mật khẩu" />
+    <HBox spacing="10.0" alignment="CENTER">
+        <Button text="Đăng nhập" onAction="#handleLogin" prefWidth="100.0"/>
+        <Button text="Đăng ký" onAction="#handleGoToRegister" prefWidth="100.0"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+    </HBox>
+    <Label fx:id="errorLabel" textFill="red"/>
+    <Label fx:id="successLabel" textFill="green"/>
+</VBox>
