@@ -463,6 +463,8 @@ public class Client {
     public User getUser() {
         return user;
     }
+    
+    
 
     public void closeConnection() throws IOException {
         isRunning = false;

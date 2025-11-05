@@ -278,11 +278,16 @@ public class MainController {
         roleColumn.setCellValueFactory(cellData -> {
             MatchDetails md = cellData.getValue();
             String role;
-            if (demRole % 2 == 0)
-                role = (md.getShooterId() == client.getUser().getId()) ? "Sút" : "Bắt";
-            else
-                role = (md.getShooterId() == client.getUser().getId()) ? "Bắt" : "Sút";
-            demRole += 1;
+
+            // Kiểm tra trực tiếp từ database: ai là shooter, ai là goalkeeper
+            if (md.getShooterId() == client.getUser().getId()) {
+                role = "Sút";
+            } else if (md.getGoalkeeperId() == client.getUser().getId()) {
+                role = "Bắt";
+            } else {
+                role = "Không xác định";
+            }
+
             return new SimpleStringProperty(role);
         });
         directionColumn.setCellValueFactory(cellData -> {

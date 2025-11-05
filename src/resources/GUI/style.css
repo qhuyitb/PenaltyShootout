@@ -5,20 +5,20 @@
 }
 
 .button {
-    -fx-background-color: #ffd54f;
+    -fx-background-color: #6ab1f0;
     -fx-text-fill: black;
     -fx-font-size: 16px;
     -fx-font-weight: bold;
 }
 
 .label {
-    -fx-text-fill: white;
+    -fx-text-fill: #454749;
     -fx-font-weight: bold;
 }
 
 #resultLabel {
     -fx-font-size: 36px;
-    -fx-text-fill: yellow;
+    -fx-text-fill: #bf6624;
 }
 
 .table-view {
@@ -34,7 +34,7 @@
 }
 
 .tab-pane .tab-header-area .tab {
-    -fx-text-fill: white;
+    -fx-text-fill: #000;
 }
 
 .menu-bar {
@@ -42,5 +42,5 @@
 }
 
 .menu-bar .menu {
-    -fx-text-fill: white;
+    -fx-text-fill: #212020;
 }

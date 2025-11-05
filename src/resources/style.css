@@ -1,39 +1,84 @@
 /* style.css */
+
+/* Toàn bộ giao diện */
 .root {
     -fx-font-family: "Arial";
-    -fx-background-color: #2E8B57;
+    -fx-background-color: linear-gradient(to bottom right, #1E90FF, #4682B4); /* Xanh dương chuyển sắc */
 }
 
+/* Nhãn (label) */
 .label {
-    -fx-text-fill: white;
+    -fx-text-fill: #212020;
 }
 
+/* Nút bấm (button) */
 .button {
-    -fx-background-color: #3CB371;
-    -fx-text-fill: white;
+    -fx-background-color: #1E90FF; /* Dodger Blue */
+    -fx-text-fill: #000000;
     -fx-font-size: 14px;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
 }
 
+.button:hover {
+    -fx-background-color: #4682B4; /* Steel Blue */
+}
+
+/* Bảng dữ liệu (table) */
 .table-view {
-    -fx-background-color: #FFFFFF; /* Đổi nền bảng thành trắng */
+    -fx-background-color: #F8F9FA; /* Nền trắng nhạt */
+    -fx-border-color: #1E90FF;
+    -fx-border-radius: 4;
 }
 
+.table-view .column-header-background {
+    -fx-background-color: #1E90FF;
+}
+
+.table-view .column-header,
+.table-view .table-cell {
+    -fx-text-fill: black;
+}
+
+/* Trường nhập liệu */
 .text-field, .password-field {
-    -fx-background-color: #FFFFFF; /* Đổi nền trường nhập liệu thành trắng */
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #1E90FF;
+    -fx-border-radius: 4;
+    -fx-padding: 4;
 }
 
+/* Tab */
 .tab-pane .tab-header-area {
-    -fx-background-color: #3CB371;
+    -fx-background-color: #1E90FF;
 }
 
 .tab-pane .tab-header-area .tab {
-    -fx-text-fill: white;
+    -fx-text-fill: #212020;
 }
 
+.tab-pane .tab-header-area .tab:selected {
+    -fx-background-color: #4682B4;
+    -fx-text-fill: #212020;
+}
+
+/* Thanh menu */
 .menu-bar {
-    -fx-background-color: #3CB371;
+    -fx-background-color: #1E90FF;
 }
 
 .menu-bar .menu {
-    -fx-text-fill: white;
+    -fx-text-fill: #212020;
+}
+
+.menu-bar .menu:hover {
+    -fx-background-color: #4682B4;
+}
+
+/* Tooltip */
+.tooltip {
+    -fx-background-color: #4682B4;
+    -fx-text-fill: #212020;
+    -fx-font-size: 12px;
+    -fx-background-radius: 4;
 }

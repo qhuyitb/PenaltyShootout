@@ -44,8 +44,12 @@ public class ClientApp extends Application {
             Platform.exit();
         }
     }
+    
+    
 
     public static void main(String[] args) {
         launch(args);
     }
+    
+    
 }
